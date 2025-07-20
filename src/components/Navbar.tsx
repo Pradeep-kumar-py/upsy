@@ -58,27 +58,41 @@ const Navbar = () => {
         }
     };
 
-    // Close mobile menu when clicking outside
+    // Close mobile menu when clicking outside or on escape
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             const nav = document.querySelector('nav');
-            if (menuOpen && nav && !nav.contains(event.target as Node)) {
+            const mobileMenu = document.querySelector('[data-mobile-menu]');
+            if (menuOpen && nav && mobileMenu && 
+                !nav.contains(event.target as Node) && 
+                !mobileMenu.contains(event.target as Node)) {
+                setMenuOpen(false);
+            }
+        };
+
+        const handleEscape = (event: KeyboardEvent) => {
+            if (event.key === 'Escape' && menuOpen) {
                 setMenuOpen(false);
             }
         };
 
         if (menuOpen) {
             document.addEventListener('mousedown', handleClickOutside);
+            document.addEventListener('keydown', handleEscape);
+            document.body.style.overflow = 'hidden'; // Prevent scroll when menu is open
+        } else {
+            document.body.style.overflow = 'unset';
         }
 
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener('keydown', handleEscape);
+            document.body.style.overflow = 'unset';
         };
     }, [menuOpen]);
 
     const navVariants = {
         initial: {
-            // backgroundColor: 'from-blue-600 via-blue-700 to-blue-800',
             backdropFilter: 'blur(0px)',
         },
         scrolled: {
@@ -96,8 +110,8 @@ const Navbar = () => {
                 variants={navVariants}
                 transition={{ duration: 0.3 }}
                 className={`
-                    fixed top-0 w-full z-50
-                    ${isScrolled ? 'py-2 sm:py-3' : 'py-3 sm:py-4 md:py-6 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800'}
+                    fixed top-0 w-full z-40
+                    ${isScrolled ? 'py-2 sm:py-3' : 'py-3 sm:py-4 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800'}
                 `}
             >
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -179,93 +193,107 @@ const Navbar = () => {
                         {/* Mobile Menu Button */}
                         <button
                             className={`
-                                md:hidden relative z-60 flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-lg transition-all duration-300
-                                ${isScrolled ? 'text-gray-700 hover:bg-gray-100' : 'text-white hover:bg-white/10'}
+                                md:hidden relative z-50 flex items-center justify-center w-10 h-10 rounded-lg transition-all duration-300 touch-manipulation
+                                ${isScrolled ? 'text-gray-700 hover:bg-gray-100 active:bg-gray-200' : 'text-white hover:bg-white/10 active:bg-white/20'}
                             `}
                             onClick={() => setMenuOpen(!menuOpen)}
                             aria-label="Toggle menu"
                             aria-expanded={menuOpen}
                         >
-                            <div className="relative">
-                                <RxCross1 className={`absolute text-lg sm:text-xl transition-all duration-300 ${menuOpen ? 'opacity-100 rotate-0' : 'opacity-0 rotate-90'}`} />
-                                <RxHamburgerMenu className={`text-lg sm:text-xl transition-all duration-300 ${menuOpen ? 'opacity-0 rotate-90' : 'opacity-100 rotate-0'}`} />
+                            <div className="relative w-5 h-5 flex items-center justify-center">
+                                <RxCross1 className={`absolute text-lg transition-all duration-300 ${menuOpen ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 rotate-90 scale-75'}`} />
+                                <RxHamburgerMenu className={`absolute text-lg transition-all duration-300 ${menuOpen ? 'opacity-0 rotate-90 scale-75' : 'opacity-100 rotate-0 scale-100'}`} />
                             </div>
                         </button>
                     </div>
                 </div>
+            </motion.nav>
 
-                {/* Mobile Menu with Framer Motion */}
-                <AnimatePresence>
-                    {menuOpen && (
+            {/* Mobile Menu Backdrop and Sidebar */}
+            <AnimatePresence>
+                {menuOpen && (
+                    <>
+                        {/* Backdrop */}
                         <motion.div 
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.2 }}
-                            className="md:hidden fixed inset-0 bg-black/50 backdrop-blur-sm"
+                            className="md:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
                             onClick={() => setMenuOpen(false)}
                         />
-                    )}
-                </AnimatePresence>
-                
-                <motion.div
-                    initial={{ x: '100%' }}
-                    animate={{ x: menuOpen ? 0 : '100%' }}
-                    transition={{ type: "spring", damping: 20, stiffness: 100 }}
-                    className="md:hidden fixed top-0 right-0 h-full w-[280px] sm:w-[320px] max-w-[85vw] bg-white/95 backdrop-blur-md shadow-2xl z-50"
-                >
-                    {/* Mobile menu content */}
-                    <div className="h-full overflow-y-auto">
-                        <div className="p-4">
-                            {/* Mobile menu header */}
-                            <div className="flex items-center justify-between mb-8 pt-4">
-                                <div className="flex items-center space-x-3">
-                                    <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
-                                        <span className="font-bold text-sm text-white">U</span>
+                        
+                        {/* Mobile Menu Sidebar */}
+                        <motion.div
+                            data-mobile-menu
+                            initial={{ x: '100%' }}
+                            animate={{ x: 0 }}
+                            exit={{ x: '100%' }}
+                            transition={{ type: "spring", damping: 25, stiffness: 120 }}
+                            className="md:hidden fixed top-0 right-0 h-full w-[min(85vw,320px)] bg-white shadow-2xl z-50"
+                        >
+                            {/* Mobile menu content */}
+                            <div className="h-full flex flex-col">
+                                {/* Header */}
+                                <div className="flex items-center justify-between p-4 border-b border-gray-100">
+                                    <div className="flex items-center space-x-3">
+                                        <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
+                                            <span className="font-bold text-sm text-white">U</span>
+                                        </div>
+                                        <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
+                                            Upsy
+                                        </span>
                                     </div>
-                                    <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
-                                        Upsy
-                                    </span>
+                                    <button
+                                        onClick={() => setMenuOpen(false)}
+                                        className="p-2 rounded-lg text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors duration-200"
+                                        aria-label="Close menu"
+                                    >
+                                        <RxCross1 className="text-lg" />
+                                    </button>
+                                </div>
+
+                                {/* Navigation items */}
+                                <div className="flex-1 overflow-y-auto px-4 py-4">
+                                    <ul className="space-y-1">
+                                        {navbarItems.map(item => (
+                                            <li key={item.name}>
+                                                <a
+                                                    href={item.href}
+                                                    onClick={(e) => {e.preventDefault(); handleNavClick(item.href);}}
+                                                    className={`
+                                                        block py-3 px-4 rounded-xl font-medium transition-all duration-200 text-base
+                                                        ${activeSection === item.id
+                                                            ? 'text-blue-600 bg-blue-50 border-l-4 border-blue-600'
+                                                            : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50 active:bg-blue-100'
+                                                        }
+                                                    `}
+                                                >
+                                                    {item.name}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                {/* Mobile CTA Button */}
+                                <div className="p-4 border-t border-gray-100">
+                                    <Link
+                                        href="/form"
+                                        onClick={() => setMenuOpen(false)}
+                                        className='w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold py-4 px-6 rounded-xl hover:from-blue-700 hover:to-blue-800 active:from-blue-800 active:to-blue-900 transition-all duration-200 text-center block touch-manipulation'
+                                    >
+                                        Get Early Access →
+                                    </Link>
                                 </div>
                             </div>
-
-                            {/* Navigation items */}
-                            <ul className="space-y-2">
-                                {navbarItems.map(item => (
-                                    <li key={item.name}>
-                                        <a
-                                            href={item.href}
-                                            onClick={(e) => {e.preventDefault(); handleNavClick(item.href);}}
-                                            className={`
-                                                block py-3 px-4 rounded-xl font-medium transition-all duration-300
-                                                ${activeSection === item.id
-                                                    ? 'text-blue-600 bg-blue-50 border-l-4 border-blue-600'
-                                                    : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
-                                                }
-                                            `}
-                                        >
-                                            {item.name}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-
-                            {/* Mobile CTA Button */}
-                            <div className="mt-8">
-                                <Link
-                                    href="/form"
-                                    className='w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold py-4 px-6 rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 hover:scale-105 shadow-lg text-center block'
-                                >
-                                    Get Early Access →
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
-            </motion.nav>
+                        </motion.div>
+                    </>
+                )}
+            </AnimatePresence>
 
             {/* Dynamic spacer */}
-            <div className={`transition-all duration-300 ${isScrolled ? 'h-14 sm:h-16' : 'h-16 sm:h-20'}`}></div>
+            <div className={`transition-all duration-300 ${isScrolled ? 'h-14 sm:h-16' : 'h-16 sm:h-18'}`}></div>
         </>
     );
 }
