@@ -216,7 +216,7 @@ const Navbar = () => {
                 >
                     {/* Mobile menu content */}
                     <div className="h-full overflow-y-auto">
-                        <div className="p-4 sm:p-6">
+                        <div className="p-4">
                             {/* Mobile menu header */}
                             <div className="flex items-center justify-between mb-8 pt-4">
                                 <div className="flex items-center space-x-3">
