@@ -3,19 +3,31 @@ import React, { useState, useEffect, useMemo } from 'react'
 import { RxHamburgerMenu, RxCross1 } from "react-icons/rx";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState('home');
+    const pathname = usePathname();
 
     const navbarItems = useMemo(() => [
-        { name: "Home", href: "#home", id: "home" },
+        { name: "Home", href: "/", id: "home" },
         { name: "How It Works", href: "#how-it-works", id: "how-it-works" },
         { name: "Who It's For", href: "#who-its-for", id: "who-its-for" },
+        { name: "Partners", href: "/partners", id: "partners", isExternal: true },
         { name: "Success Stories", href: "#use-cases", id: "use-cases" },
         { name: "FAQs", href: "#faqs", id: "faqs" },
     ], []);
+
+    // Function to check if a navigation item is active
+    const isNavItemActive = (item: typeof navbarItems[0]) => {
+        if (item.isExternal) {
+            return pathname === item.href;
+        } else {
+            return pathname === '/' && activeSection === item.id;
+        }
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -146,29 +158,54 @@ const Navbar = () => {
                         <ul className='hidden md:flex items-center space-x-1 lg:space-x-2'>
                             {navbarItems.map(item => (
                                 <li key={item.name}>
-                                    <a 
-                                        href={item.href}
-                                        onClick={(e) => {e.preventDefault(); handleNavClick(item.href);}}
-                                        className={`
-                                            relative py-2 px-3 lg:px-4 rounded-lg font-medium transition-all duration-300 text-sm lg:text-base
-                                            ${activeSection === item.id
-                                                ? isScrolled
-                                                    ? 'text-blue-600 bg-blue-50'
-                                                    : 'text-yellow-300 bg-white/15'
-                                                : isScrolled 
-                                                    ? 'text-gray-700 hover:text-blue-600 hover:bg-blue-50' 
-                                                    : 'text-white/90 hover:text-white hover:bg-white/10'
-                                            }
-                                        `}
-                                    >
-                                        {item.name}
-                                        {activeSection === item.id && (
-                                            <div className={`
-                                                absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2 h-0.5 rounded-full transition-all duration-300
-                                                ${isScrolled ? 'bg-blue-600' : 'bg-yellow-300'}
-                                            `} />
-                                        )}
-                                    </a>
+                                    {item.isExternal ? (
+                                        <Link 
+                                            href={item.href}
+                                            className={`
+                                                relative py-2 px-3 lg:px-4 rounded-lg font-medium transition-all duration-300 text-sm lg:text-base
+                                                ${isNavItemActive(item)
+                                                    ? isScrolled
+                                                        ? 'text-blue-600 bg-blue-50'
+                                                        : 'text-yellow-300 bg-white/15'
+                                                    : isScrolled 
+                                                        ? 'text-gray-700 hover:text-blue-600 hover:bg-blue-50' 
+                                                        : 'text-white/90 hover:text-white hover:bg-white/10'
+                                                }
+                                            `}
+                                        >
+                                            {item.name}
+                                            {isNavItemActive(item) && (
+                                                <div className={`
+                                                    absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2 h-0.5 rounded-full transition-all duration-300
+                                                    ${isScrolled ? 'bg-blue-600' : 'bg-yellow-300'}
+                                                `} />
+                                            )}
+                                        </Link>
+                                    ) : (
+                                        <a 
+                                            href={item.href}
+                                            onClick={(e) => {e.preventDefault(); handleNavClick(item.href);}}
+                                            className={`
+                                                relative py-2 px-3 lg:px-4 rounded-lg font-medium transition-all duration-300 text-sm lg:text-base
+                                                ${isNavItemActive(item)
+                                                    ? isScrolled
+                                                        ? 'text-blue-600 bg-blue-50'
+                                                        : 'text-yellow-300 bg-white/15'
+                                                    : isScrolled 
+                                                        ? 'text-gray-700 hover:text-blue-600 hover:bg-blue-50' 
+                                                        : 'text-white/90 hover:text-white hover:bg-white/10'
+                                                }
+                                            `}
+                                        >
+                                            {item.name}
+                                            {isNavItemActive(item) && (
+                                                <div className={`
+                                                    absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2 h-0.5 rounded-full transition-all duration-300
+                                                    ${isScrolled ? 'bg-blue-600' : 'bg-yellow-300'}
+                                                `} />
+                                            )}
+                                        </a>
+                                    )}
                                 </li>
                             ))}
                         </ul> 
@@ -258,19 +295,35 @@ const Navbar = () => {
                                     <ul className="space-y-1">
                                         {navbarItems.map(item => (
                                             <li key={item.name}>
-                                                <a
-                                                    href={item.href}
-                                                    onClick={(e) => {e.preventDefault(); handleNavClick(item.href);}}
-                                                    className={`
-                                                        block py-3 px-4 rounded-xl font-medium transition-all duration-200 text-base
-                                                        ${activeSection === item.id
-                                                            ? 'text-blue-600 bg-blue-50 border-l-4 border-blue-600'
-                                                            : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50 active:bg-blue-100'
-                                                        }
-                                                    `}
-                                                >
-                                                    {item.name}
-                                                </a>
+                                                {item.isExternal ? (
+                                                    <Link
+                                                        href={item.href}
+                                                        onClick={() => setMenuOpen(false)}
+                                                        className={`
+                                                            block py-3 px-4 rounded-xl font-medium transition-all duration-200 text-base
+                                                            ${isNavItemActive(item)
+                                                                ? 'text-blue-600 bg-blue-50 border-l-4 border-blue-600'
+                                                                : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50 active:bg-blue-100'
+                                                            }
+                                                        `}
+                                                    >
+                                                        {item.name}
+                                                    </Link>
+                                                ) : (
+                                                    <a
+                                                        href={item.href}
+                                                        onClick={(e) => {e.preventDefault(); handleNavClick(item.href);}}
+                                                        className={`
+                                                            block py-3 px-4 rounded-xl font-medium transition-all duration-200 text-base
+                                                            ${isNavItemActive(item)
+                                                                ? 'text-blue-600 bg-blue-50 border-l-4 border-blue-600'
+                                                                : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50 active:bg-blue-100'
+                                                            }
+                                                        `}
+                                                    >
+                                                        {item.name}
+                                                    </a>
+                                                )}
                                             </li>
                                         ))}
                                     </ul>
