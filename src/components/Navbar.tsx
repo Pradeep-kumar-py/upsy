@@ -9,13 +9,17 @@ const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState('home');
+    const [homeDropdownOpen, setHomeDropdownOpen] = useState(false);
     const pathname = usePathname();
 
     const navbarItems = useMemo(() => [
-        { name: "Home", href: "/", id: "home" },
+        { name: "Home", href: "/", id: "home", isExternal: true },
+        { name: "Partners", href: "/partners", id: "partners", isExternal: true },
+    ], []);
+
+    const homeDropdownItems = useMemo(() => [
         { name: "How It Works", href: "#how-it-works", id: "how-it-works" },
         { name: "Who It's For", href: "#who-its-for", id: "who-its-for" },
-        { name: "Partners", href: "/partners", id: "partners", isExternal: true },
         { name: "Success Stories", href: "#use-cases", id: "use-cases" },
         { name: "FAQs", href: "#faqs", id: "faqs" },
     ], []);
@@ -34,26 +38,29 @@ const Navbar = () => {
             setIsScrolled(window.scrollY > 50);
             
             // Update active section based on scroll position with better detection
-            const sections = navbarItems.map(item => document.getElementById(item.id)).filter(Boolean);
-            const scrollPosition = window.scrollY + window.innerHeight / 3;
+            // Only track sections when on home page
+            if (pathname === '/') {
+                const sections = homeDropdownItems.map(item => document.getElementById(item.id)).filter(Boolean);
+                const scrollPosition = window.scrollY + window.innerHeight / 3;
 
-            let currentSection = 'home';
-            sections.forEach((section, index) => {
-                if (section) {
-                    const { offsetTop, offsetHeight } = section;
-                    if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-                        currentSection = navbarItems[index].id;
+                let currentSection = 'home';
+                sections.forEach((section, index) => {
+                    if (section) {
+                        const { offsetTop, offsetHeight } = section;
+                        if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                            currentSection = homeDropdownItems[index].id;
+                        }
                     }
-                }
-            });
-            
-            setActiveSection(currentSection);
+                });
+                
+                setActiveSection(currentSection);
+            }
         };
 
         window.addEventListener('scroll', handleScroll);
         handleScroll(); // Call once on mount
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [navbarItems]);
+    }, [homeDropdownItems, pathname]);
 
     const handleNavClick = (href: string) => {
         setMenuOpen(false);
@@ -139,9 +146,8 @@ const Navbar = () => {
                             `}>
                                 <span className="font-bold text-base sm:text-lg text-white">U</span>
                             </div>
-                            <a 
-                                href="#home" 
-                                onClick={(e) => {e.preventDefault(); handleNavClick('#home');}}
+                            <Link 
+                                href="/"
                                 className={`
                                     text-xl sm:text-2xl font-bold transition-all duration-300 hover:scale-105
                                     ${isScrolled 
@@ -151,14 +157,80 @@ const Navbar = () => {
                                 `}
                             >
                                 Upsy
-                            </a>
+                            </Link>
                         </div>
 
                         {/* Desktop Navigation */}
                         <ul className='hidden md:flex items-center space-x-1 lg:space-x-2'>
                             {navbarItems.map(item => (
-                                <li key={item.name}>
-                                    {item.isExternal ? (
+                                <li key={item.name} className="relative">
+                                    {item.name === "Home" ? (
+                                        <div 
+                                            className="relative"
+                                            onMouseEnter={() => setHomeDropdownOpen(true)}
+                                            onMouseLeave={() => setHomeDropdownOpen(false)}
+                                        >
+                                            <Link 
+                                                href={item.href}
+                                                className={`
+                                                    relative py-2 px-3 lg:px-4 rounded-lg font-medium transition-all duration-300 text-sm lg:text-base flex items-center
+                                                    ${isNavItemActive(item)
+                                                        ? isScrolled
+                                                            ? 'text-blue-600 bg-blue-50'
+                                                            : 'text-yellow-300 bg-white/15'
+                                                        : isScrolled 
+                                                            ? 'text-gray-700 hover:text-blue-600 hover:bg-blue-50' 
+                                                            : 'text-white/90 hover:text-white hover:bg-white/10'
+                                                    }
+                                                `}
+                                            >
+                                                {item.name}
+                                                <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                                {isNavItemActive(item) && (
+                                                    <div className={`
+                                                        absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2 h-0.5 rounded-full transition-all duration-300
+                                                        ${isScrolled ? 'bg-blue-600' : 'bg-yellow-300'}
+                                                    `} />
+                                                )}
+                                            </Link>
+                                            
+                                            {/* Dropdown Menu */}
+                                            <AnimatePresence>
+                                                {homeDropdownOpen && (
+                                                    <motion.div
+                                                        initial={{ opacity: 0, y: 10 }}
+                                                        animate={{ opacity: 1, y: 0 }}
+                                                        exit={{ opacity: 0, y: 10 }}
+                                                        transition={{ duration: 0.2 }}
+                                                        className="absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50"
+                                                    >
+                                                        {homeDropdownItems.map(dropdownItem => (
+                                                            <a
+                                                                key={dropdownItem.name}
+                                                                href={dropdownItem.href}
+                                                                onClick={(e) => {
+                                                                    e.preventDefault();
+                                                                    setHomeDropdownOpen(false);
+                                                                    handleNavClick(dropdownItem.href);
+                                                                }}
+                                                                className={`
+                                                                    block px-4 py-2 text-sm transition-colors duration-200
+                                                                    ${pathname === '/' && activeSection === dropdownItem.id
+                                                                        ? 'text-blue-600 bg-blue-50 border-r-2 border-blue-600'
+                                                                        : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
+                                                                    }
+                                                                `}
+                                                            >
+                                                                {dropdownItem.name}
+                                                            </a>
+                                                        ))}
+                                                    </motion.div>
+                                                )}
+                                            </AnimatePresence>
+                                        </div>
+                                    ) : (
                                         <Link 
                                             href={item.href}
                                             className={`
@@ -181,30 +253,6 @@ const Navbar = () => {
                                                 `} />
                                             )}
                                         </Link>
-                                    ) : (
-                                        <a 
-                                            href={item.href}
-                                            onClick={(e) => {e.preventDefault(); handleNavClick(item.href);}}
-                                            className={`
-                                                relative py-2 px-3 lg:px-4 rounded-lg font-medium transition-all duration-300 text-sm lg:text-base
-                                                ${isNavItemActive(item)
-                                                    ? isScrolled
-                                                        ? 'text-blue-600 bg-blue-50'
-                                                        : 'text-yellow-300 bg-white/15'
-                                                    : isScrolled 
-                                                        ? 'text-gray-700 hover:text-blue-600 hover:bg-blue-50' 
-                                                        : 'text-white/90 hover:text-white hover:bg-white/10'
-                                                }
-                                            `}
-                                        >
-                                            {item.name}
-                                            {isNavItemActive(item) && (
-                                                <div className={`
-                                                    absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2 h-0.5 rounded-full transition-all duration-300
-                                                    ${isScrolled ? 'bg-blue-600' : 'bg-yellow-300'}
-                                                `} />
-                                            )}
-                                        </a>
                                     )}
                                 </li>
                             ))}
@@ -295,34 +343,45 @@ const Navbar = () => {
                                     <ul className="space-y-1">
                                         {navbarItems.map(item => (
                                             <li key={item.name}>
-                                                {item.isExternal ? (
-                                                    <Link
-                                                        href={item.href}
-                                                        onClick={() => setMenuOpen(false)}
-                                                        className={`
-                                                            block py-3 px-4 rounded-xl font-medium transition-all duration-200 text-base
-                                                            ${isNavItemActive(item)
-                                                                ? 'text-blue-600 bg-blue-50 border-l-4 border-blue-600'
-                                                                : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50 active:bg-blue-100'
-                                                            }
-                                                        `}
-                                                    >
-                                                        {item.name}
-                                                    </Link>
-                                                ) : (
-                                                    <a
-                                                        href={item.href}
-                                                        onClick={(e) => {e.preventDefault(); handleNavClick(item.href);}}
-                                                        className={`
-                                                            block py-3 px-4 rounded-xl font-medium transition-all duration-200 text-base
-                                                            ${isNavItemActive(item)
-                                                                ? 'text-blue-600 bg-blue-50 border-l-4 border-blue-600'
-                                                                : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50 active:bg-blue-100'
-                                                            }
-                                                        `}
-                                                    >
-                                                        {item.name}
-                                                    </a>
+                                                <Link
+                                                    href={item.href}
+                                                    onClick={() => setMenuOpen(false)}
+                                                    className={`
+                                                        block py-3 px-4 rounded-xl font-medium transition-all duration-200 text-base
+                                                        ${isNavItemActive(item)
+                                                            ? 'text-blue-600 bg-blue-50 border-l-4 border-blue-600'
+                                                            : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50 active:bg-blue-100'
+                                                        }
+                                                    `}
+                                                >
+                                                    {item.name}
+                                                </Link>
+                                                
+                                                {/* Show home dropdown items in mobile when on home page */}
+                                                {item.name === "Home" && pathname === '/' && (
+                                                    <ul className="ml-4 mt-2 space-y-1">
+                                                        {homeDropdownItems.map(dropdownItem => (
+                                                            <li key={dropdownItem.name}>
+                                                                <a
+                                                                    href={dropdownItem.href}
+                                                                    onClick={(e) => {
+                                                                        e.preventDefault();
+                                                                        setMenuOpen(false);
+                                                                        handleNavClick(dropdownItem.href);
+                                                                    }}
+                                                                    className={`
+                                                                        block py-2 px-3 rounded-lg font-medium transition-all duration-200 text-sm
+                                                                        ${activeSection === dropdownItem.id
+                                                                            ? 'text-blue-600 bg-blue-50 border-l-2 border-blue-600'
+                                                                            : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
+                                                                        }
+                                                                    `}
+                                                                >
+                                                                    {dropdownItem.name}
+                                                                </a>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
                                                 )}
                                             </li>
                                         ))}
