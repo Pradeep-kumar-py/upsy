@@ -15,6 +15,7 @@ const Navbar = () => {
     const navbarItems = useMemo(() => [
         { name: "Home", href: "/", id: "home", isExternal: true },
         { name: "Partners", href: "/partners", id: "partners", isExternal: true },
+        { name: "Blog", href: "/blog", id: "blog", isExternal: true },
     ], []);
 
     const homeDropdownItems = useMemo(() => [

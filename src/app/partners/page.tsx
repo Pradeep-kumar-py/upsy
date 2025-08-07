@@ -7,6 +7,8 @@ import Link from "next/link";
 
 export default function PartnersPage() {
   const [activeTab, setActiveTab] = useState('universities');
+  const [partnerCategories, setPartnerCategories] = useState<any>({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Smooth scrolling for anchor links
@@ -31,112 +33,153 @@ export default function PartnersPage() {
     return () => observer.disconnect();
   }, []);
 
-  const partnerCategories = {
-    universities: {
-      title: "University Partners",
-      description: "Leading educational institutions providing world-class programs",
-      icon: FaUniversity,
-      partners: [
-        {
-          name: "Harvard University",
-          logo: "https://logos-world.net/wp-content/uploads/2021/01/Harvard-Logo.png",
-          description: "Ivy League university offering online courses and exchange programs",
-          programs: ["Business Analytics", "Computer Science", "Data Science"],
-          students: "2,500+"
-        },
-        {
-          name: "Stanford University", 
-          logo: "https://logos-world.net/wp-content/uploads/2020/06/Stanford-Logo.png",
-          description: "Leading technology and innovation programs",
-          programs: ["AI & Machine Learning", "Entrepreneurship", "Engineering"],
-          students: "1,800+"
-        },
-        {
-          name: "MIT",
-          logo: "https://logos-world.net/wp-content/uploads/2020/06/MIT-Logo.png", 
-          description: "World-renowned technology and science programs",
-          programs: ["Engineering", "Computer Science", "Innovation"],
-          students: "2,200+"
-        },
-        {
-          name: "University of Cambridge",
-          logo: "https://logos-world.net/wp-content/uploads/2021/01/Cambridge-Logo.png",
-          description: "Historic university with cutting-edge research programs",
-          programs: ["Research Programs", "Liberal Arts", "Sciences"],
-          students: "1,500+"
-        }
-      ]
-    },
-    corporates: {
-      title: "Corporate Partners",
-      description: "Industry leaders offering skill development and internship opportunities",
-      icon: FaBuilding,
-      partners: [
-        {
-          name: "Google",
-          logo: "https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png",
-          description: "Technology giant offering career development programs",
-          programs: ["Digital Marketing", "Cloud Computing", "AI/ML"],
-          students: "5,000+"
-        },
-        {
-          name: "Microsoft",
-          logo: "https://logos-world.net/wp-content/uploads/2020/04/Microsoft-Logo.png",
-          description: "Leading software company with comprehensive training programs",
-          programs: ["Azure Certification", "Software Development", "Data Analytics"],
-          students: "4,200+"
-        },
-        {
-          name: "Amazon",
-          logo: "https://logos-world.net/wp-content/uploads/2020/04/Amazon-Logo.png",
-          description: "E-commerce and cloud computing leader",
-          programs: ["AWS Training", "Supply Chain", "Business Development"],
-          students: "3,800+"
-        },
-        {
-          name: "Meta",
-          logo: "https://logos-world.net/wp-content/uploads/2021/10/Meta-Logo.png",
-          description: "Social media and metaverse technology company",
-          programs: ["Social Media Marketing", "VR/AR Development", "Product Management"],
-          students: "2,900+"
-        }
-      ]
-    },
-    platforms: {
-      title: "Learning Platform Partners",
-      description: "Online education platforms providing flexible learning solutions",
-      icon: FaGraduationCap,
-      partners: [
-        {
-          name: "Coursera",
-          logo: "https://logos-world.net/wp-content/uploads/2021/03/Coursera-Logo.png",
-          description: "World's largest online learning platform",
-          programs: ["Professional Certificates", "Degrees", "Specializations"],
-          students: "8,500+"
-        },
-        {
-          name: "Udacity",
-          logo: "https://logos-world.net/wp-content/uploads/2021/05/Udacity-Logo.png",
-          description: "Tech-focused online education with industry partnerships",
-          programs: ["Nanodegrees", "Tech Skills", "Career Services"],
-          students: "3,200+"
-        },
-        {
-          name: "edX",
-          logo: "https://logos-world.net/wp-content/uploads/2021/03/edX-Logo.png",
-          description: "Non-profit online learning platform by Harvard and MIT",
-          programs: ["MicroMasters", "Professional Education", "University Courses"],
-          students: "4,700+"
-        },
-        {
-          name: "Skillshare",
-          logo: "https://logos-world.net/wp-content/uploads/2021/06/Skillshare-Logo.png",
-          description: "Creative and business skills learning community",
-          programs: ["Creative Skills", "Business Skills", "Technology"],
-          students: "2,100+"
-        }
-      ]
+  useEffect(() => {
+    fetchPartnerData();
+  }, []);
+
+  const fetchPartnerData = async () => {
+    try {
+      const response = await fetch('/api/partners');
+      const result = await response.json();
+      
+      if (response.ok && result.data) {
+        // Add icons to the fetched data
+        const dataWithIcons = {
+          universities: {
+            ...result.data.universities,
+            icon: FaUniversity
+          },
+          corporates: {
+            ...result.data.corporates,
+            icon: FaBuilding
+          },
+          platforms: {
+            ...result.data.platforms,
+            icon: FaGraduationCap
+          }
+        };
+        setPartnerCategories(dataWithIcons);
+      } else {
+        // Fallback to default data if API fails
+        setPartnerCategories(getDefaultPartnerCategories());
+      }
+    } catch (error) {
+      console.error('Error fetching partner data:', error);
+      // Fallback to default data
+      setPartnerCategories(getDefaultPartnerCategories());
+    } finally {
+      setLoading(false);
     }
+  };
+
+  const getDefaultPartnerCategories = () => {
+    return {
+      universities: {
+        title: "University Partners",
+        description: "Leading educational institutions providing world-class programs",
+        icon: FaUniversity,
+        partners: [
+          {
+            name: "Harvard University",
+            logo: "https://logos-world.net/wp-content/uploads/2021/01/Harvard-Logo.png",
+            description: "Ivy League university offering online courses and exchange programs",
+            programs: ["Business Analytics", "Computer Science", "Data Science"],
+            students: "2,500+"
+          },
+          {
+            name: "Stanford University", 
+            logo: "https://logos-world.net/wp-content/uploads/2020/06/Stanford-Logo.png",
+            description: "Leading technology and innovation programs",
+            programs: ["AI & Machine Learning", "Entrepreneurship", "Engineering"],
+            students: "1,800+"
+          },
+          {
+            name: "MIT",
+            logo: "https://logos-world.net/wp-content/uploads/2020/06/MIT-Logo.png", 
+            description: "World-renowned technology and science programs",
+            programs: ["Engineering", "Computer Science", "Innovation"],
+            students: "2,200+"
+          },
+          {
+            name: "University of Cambridge",
+            logo: "https://logos-world.net/wp-content/uploads/2021/01/Cambridge-Logo.png",
+            description: "Historic university with cutting-edge research programs",
+            programs: ["Research Programs", "Liberal Arts", "Sciences"],
+            students: "1,500+"
+          }
+        ]
+      },
+      corporates: {
+        title: "Corporate Partners",
+        description: "Industry leaders offering skill development and internship opportunities",
+        icon: FaBuilding,
+        partners: [
+          {
+            name: "Google",
+            logo: "https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png",
+            description: "Technology giant offering career development programs",
+            programs: ["Digital Marketing", "Cloud Computing", "AI/ML"],
+            students: "5,000+"
+          },
+          {
+            name: "Microsoft",
+            logo: "https://logos-world.net/wp-content/uploads/2020/04/Microsoft-Logo.png",
+            description: "Leading software company with comprehensive training programs",
+            programs: ["Azure Certification", "Software Development", "Data Analytics"],
+            students: "4,200+"
+          },
+          {
+            name: "Amazon",
+            logo: "https://logos-world.net/wp-content/uploads/2020/04/Amazon-Logo.png",
+            description: "E-commerce and cloud computing leader",
+            programs: ["AWS Training", "Supply Chain", "Business Development"],
+            students: "3,800+"
+          },
+          {
+            name: "Meta",
+            logo: "https://logos-world.net/wp-content/uploads/2021/10/Meta-Logo.png",
+            description: "Social media and metaverse technology company",
+            programs: ["Social Media Marketing", "VR/AR Development", "Product Management"],
+            students: "2,900+"
+          }
+        ]
+      },
+      platforms: {
+        title: "Learning Platform Partners",
+        description: "Online education platforms providing flexible learning solutions",
+        icon: FaGraduationCap,
+        partners: [
+          {
+            name: "Coursera",
+            logo: "https://logos-world.net/wp-content/uploads/2021/03/Coursera-Logo.png",
+            description: "World's largest online learning platform",
+            programs: ["Professional Certificates", "Degrees", "Specializations"],
+            students: "8,500+"
+          },
+          {
+            name: "Udacity",
+            logo: "https://logos-world.net/wp-content/uploads/2021/05/Udacity-Logo.png",
+            description: "Tech-focused online education with industry partnerships",
+            programs: ["Nanodegrees", "Tech Skills", "Career Services"],
+            students: "3,200+"
+          },
+          {
+            name: "edX",
+            logo: "https://logos-world.net/wp-content/uploads/2021/03/edX-Logo.png",
+            description: "Non-profit online learning platform by Harvard and MIT",
+            programs: ["MicroMasters", "Professional Education", "University Courses"],
+            students: "4,700+"
+          },
+          {
+            name: "Skillshare",
+            logo: "https://logos-world.net/wp-content/uploads/2021/06/Skillshare-Logo.png",
+            description: "Creative and business skills learning community",
+            programs: ["Creative Skills", "Business Skills", "Technology"],
+            students: "2,100+"
+          }
+        ]
+      }
+    };
   };
 
   const testimonials = [
@@ -427,45 +470,54 @@ export default function PartnersPage() {
               Explore our diverse network of educational institutions, corporations, and platforms.
             </p>
 
-            {/* Category Tabs */}
-            <div className="flex flex-wrap justify-center gap-4 mb-12">
-              {Object.entries(partnerCategories).map(([key, category]) => (
-                <button
-                  key={key}
-                  onClick={() => setActiveTab(key)}
-                  className={`flex items-center px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                    activeTab === key 
-                      ? 'tab-active shadow-lg' 
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  <category.icon className="mr-2" />
-                  {category.title}
-                </button>
-              ))}
-            </div>
+            {loading ? (
+              <div className="flex justify-center items-center h-64">
+                <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
+              </div>
+            ) : (
+              <>
+                {/* Category Tabs */}
+                <div className="flex flex-wrap justify-center gap-4 mb-12">
+                  {Object.entries(partnerCategories).map(([key, category]: [string, any]) => (
+                    <button
+                      key={key}
+                      onClick={() => setActiveTab(key)}
+                      className={`flex items-center px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                        activeTab === key 
+                          ? 'tab-active shadow-lg' 
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                    >
+                      <category.icon className="mr-2" />
+                      {category.title}
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
 
           {/* Partners Grid */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                  {partnerCategories[activeTab as keyof typeof partnerCategories].title}
-                </h3>
-                <p className="text-gray-600">
-                  {partnerCategories[activeTab as keyof typeof partnerCategories].description}
-                </p>
-              </div>
+          {!loading && (
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    {partnerCategories[activeTab as keyof typeof partnerCategories]?.title || 'Loading...'}
+                  </h3>
+                  <p className="text-gray-600">
+                    {partnerCategories[activeTab as keyof typeof partnerCategories]?.description || ''}
+                  </p>
+                </div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {partnerCategories[activeTab as keyof typeof partnerCategories].partners.map((partner, index) => (
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                  {partnerCategories[activeTab as keyof typeof partnerCategories]?.partners?.map((partner: any, index: number) => (
                   <motion.div
                     key={index}
                     className="partner-card bg-white rounded-2xl p-6 shadow-lg"
@@ -494,7 +546,7 @@ export default function PartnersPage() {
                     <div className="space-y-2 mb-4">
                       <div className="text-sm text-gray-500">Programs:</div>
                       <div className="flex flex-wrap gap-1">
-                        {partner.programs.slice(0, 2).map((program, i) => (
+                        {partner.programs.slice(0, 2).map((program: string, i: number) => (
                           <span key={i} className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full">
                             {program}
                           </span>
@@ -518,6 +570,7 @@ export default function PartnersPage() {
               </div>
             </motion.div>
           </AnimatePresence>
+          )}
         </div>
       </section>
 
