@@ -700,7 +700,7 @@ export default function BlogPage() {
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 px-6 py-4 rounded-xl border-0 focus:outline-none focus:ring-4 focus:ring-white/50 text-gray-700 shadow-lg"
+                  className="flex-1 px-6 py-4 rounded-xl border-2 focus:outline-none  text-white shadow-lg"
                 />
                 <button className="group bg-white text-blue-700 px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300 hover:scale-105 shadow-xl">
                   <span className="group-hover:mr-2 transition-all duration-300">Subscribe</span>
@@ -708,7 +708,7 @@ export default function BlogPage() {
                 </button>
               </div>
               <p className="text-blue-200 text-sm mt-4">
-                No spam, unsubscribe at any time.
+                No spam, please.
               </p>
             </motion.div>
           </div>
