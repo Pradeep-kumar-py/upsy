@@ -259,10 +259,22 @@ const Navbar = () => {
                             ))}
                         </ul> 
 
-                        {/* CTA Button (Desktop) */}
-                        <div className="hidden md:block">
+                        {/* CTA Buttons (Desktop) */}
+                        <div className="hidden md:flex items-center space-x-3">
                             <Link 
-                                href="/form"
+                                href="/auth/login"
+                                className={`
+                                    px-4 lg:px-5 py-2 lg:py-2.5 text-sm lg:text-base rounded-lg font-medium transition-all duration-300
+                                    ${isScrolled 
+                                        ? 'text-gray-700 hover:text-blue-600 hover:bg-blue-50' 
+                                        : 'text-white/90 hover:text-white hover:bg-white/10'
+                                    }
+                                `}
+                            >
+                                Log in
+                            </Link>
+                            <Link 
+                                href="/auth/signup"
                                 className={`
                                     group relative px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base rounded-xl font-semibold transition-all duration-300
                                     ${isScrolled 
@@ -271,7 +283,7 @@ const Navbar = () => {
                                     }
                                 `}
                             >
-                                <span className="group-hover:mr-1 transition-all duration-300">Get Early Access</span>
+                                <span className="group-hover:mr-1 transition-all duration-300">Sign up</span>
                                 <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
                             </Link>
                         </div>
@@ -389,14 +401,21 @@ const Navbar = () => {
                                     </ul>
                                 </div>
 
-                                {/* Mobile CTA Button */}
-                                <div className="p-4 border-t border-gray-100">
+                                {/* Mobile Auth Buttons */}
+                                <div className="p-4 border-t border-gray-100 space-y-3">
                                     <Link
-                                        href="/form"
+                                        href="/auth/login"
                                         onClick={() => setMenuOpen(false)}
-                                        className='w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold py-4 px-6 rounded-xl hover:from-blue-700 hover:to-blue-800 active:from-blue-800 active:to-blue-900 transition-all duration-200 text-center block touch-manipulation'
+                                        className='w-full border border-blue-600 text-blue-600 font-semibold py-3 px-6 rounded-xl hover:bg-blue-50 transition-all duration-200 text-center block touch-manipulation'
                                     >
-                                        Get Early Access →
+                                        Log in
+                                    </Link>
+                                    <Link
+                                        href="/auth/signup"
+                                        onClick={() => setMenuOpen(false)}
+                                        className='w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold py-3 px-6 rounded-xl hover:from-blue-700 hover:to-blue-800 active:from-blue-800 active:to-blue-900 transition-all duration-200 text-center block touch-manipulation'
+                                    >
+                                        Sign up →
                                     </Link>
                                 </div>
                             </div>
