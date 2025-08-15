@@ -134,7 +134,7 @@ export default function HomePage() {
                   <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
                     Invest in dreams
                     <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-orange-400 animate-pulse">
-                      Not in upfront Dues
+                      Not in upfront dues
                     </span>
                   </h1>
                 </div>
@@ -403,7 +403,7 @@ export default function HomePage() {
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <span className="text-3xl">🧑‍🎓</span>
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-4">students</h3>
+                  <h3 className="font-bold text-gray-900 mb-4">Students</h3>
                   <p className="text-gray-600 leading-relaxed flex-grow">Ambitious learners seeking flexible, affordable education</p>
                 </div>
               </div>
@@ -415,7 +415,7 @@ export default function HomePage() {
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <span className="text-3xl">👨‍👦</span>
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-4">parents</h3>
+                  <h3 className="font-bold text-gray-900 mb-4">Parents</h3>
                   <p className="text-gray-600 leading-relaxed flex-grow">Making quality education affordable for your child’s future</p>
                 </div>
               </div>
@@ -427,7 +427,7 @@ export default function HomePage() {
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <span className="text-3xl">👔</span>
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-4">employees</h3>
+                  <h3 className="font-bold text-gray-900 mb-4">Employees</h3>
                   <p className="text-gray-600 leading-relaxed flex-grow">Professionals upgrading skills for career growth</p>
                 </div>
               </div>

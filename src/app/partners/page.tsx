@@ -356,13 +356,13 @@ export default function PartnersPage() {
                   <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
                     Partnering with
                     <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-orange-400">
-                      World-Class Institutions
+                      institutions that build futures
                     </span>
                   </h1>
                 </div>
                 <div className="initial-hidden animate-fadeIn" style={{ animationDelay: '0.3s' }}>
                   <p className="text-xl lg:text-2xl mb-8 text-blue-100 leading-relaxed font-light">
-                    We collaborate with leading universities, corporations, and learning platforms to bring you the best educational opportunities. Together, we're making quality education accessible to everyone.
+                    Upsy partners with institutions that nurture talent and drive success to empower education and unlock true potential.
                   </p>
                 </div>
                 <div className="initial-hidden animate-scaleIn" style={{ animationDelay: '0.6s' }}>
@@ -394,7 +394,7 @@ export default function PartnersPage() {
                       </div>
                       <div className="text-center p-4 bg-white/10 rounded-xl">
                         <h3 className="text-3xl font-bold text-yellow-300">50+</h3>
-                        <p className="text-blue-100">Countries</p>
+                        <p className="text-blue-100">Cities</p>
                       </div>
                       <div className="text-center p-4 bg-white/10 rounded-xl">
                         <h3 className="text-3xl font-bold text-yellow-300">25K+</h3>
