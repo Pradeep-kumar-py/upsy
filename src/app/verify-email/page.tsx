@@ -39,50 +39,7 @@ function VerifyEmailContent() {
       }
       return;
     }
-    // If no error or verified, you can add more logic here if needed
-  }, [searchParams]);
 
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-12">
-      {status === 'loading' && (
-        <div className="flex flex-col items-center">
-          <Mail size={48} className="text-blue-500 mb-4" />
-          <h2 className="text-xl font-semibold mb-2">Verifying your email...</h2>
-          <p>Please wait while we verify your email address.</p>
-        </div>
-      )}
-      {status === 'success' && (
-        <div className="flex flex-col items-center">
-          <CheckCircle size={48} className="text-green-500 mb-4" />
-          <h2 className="text-xl font-semibold mb-2">Email Verified!</h2>
-          <p>{message}</p>
-          <a href="/auth/login" className="mt-6 px-4 py-2 bg-blue-600 text-white rounded flex items-center gap-2">
-            Log In <ArrowRight size={18} />
-          </a>
-        </div>
-      )}
-      {status === 'error' && (
-        <div className="flex flex-col items-center">
-          <XCircle size={48} className="text-red-500 mb-4" />
-          <h2 className="text-xl font-semibold mb-2">Verification Failed</h2>
-          <p>{message}</p>
-          <a href="/auth/signup" className="mt-6 px-4 py-2 bg-blue-600 text-white rounded flex items-center gap-2">
-            Sign Up Again <ArrowRight size={18} />
-          </a>
-        </div>
-      )}
-    </div>
-  );
-}
-
-export default function VerifyEmailPage() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <VerifyEmailContent />
-    </Suspense>
-  );
-}
-    
     if (token) {
       verifyEmail(token);
     } else {
@@ -90,7 +47,7 @@ export default function VerifyEmailPage() {
       setMessage('Verification token is missing. Please check your email for the correct link.');
     }
   }, [searchParams]);
-  
+
   const verifyEmail = async (token: string) => {
     try {
       const response = await fetch('/api/auth/verify-email', {
@@ -196,5 +153,13 @@ export default function VerifyEmailPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function VerifyEmailPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <VerifyEmailContent />
+    </Suspense>
   );
 }
