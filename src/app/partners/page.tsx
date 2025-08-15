@@ -209,23 +209,23 @@ export default function PartnersPage() {
   const benefits = [
     {
       icon: FaUsers,
-      title: "Increased Enrollment",
-      description: "Partners see 35% average increase in student applications"
+      title: "Easy enrollment",
+      description: "Easier enrollment with a fast and efficient one-time process"
     },
     {
       icon: FaGlobe,
-      title: "Global Reach",
-      description: "Access to students from 50+ countries worldwide"
+      title: "No portal fees",
+      description: "No handling or maintenance fee or any type of subscription fee"
     },
     {
       icon: FaChartLine,
-      title: "Better Outcomes",
-      description: "Higher completion rates and student satisfaction"
+      title: "No tracking required",
+      description: "Zero tracking with all payments settled upfront"
     },
     {
       icon: FaAward,
-      title: "Quality Assurance",
-      description: "Rigorous vetting process ensures program quality"
+      title: "Increased affordability",
+      description: "Extend better affordability to existing and future student base"
     }
   ];
 
@@ -433,7 +433,7 @@ export default function PartnersPage() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800"> Our Partners</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Join our network of leading institutions and unlock new opportunities for growth and impact.
+              We do not believe in lengthy forms and portals, our partners enjoy instant seat confirmation in a single visit. No tedious paperwork. Streamlined for every institute, big or small.
             </p>
           </div>
 
@@ -575,7 +575,7 @@ export default function PartnersPage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 lg:py-32 bg-gradient-to-b from-gray-50 to-white animate-on-scroll initial-hidden">
+      {/* <section className="py-24 lg:py-32 bg-gradient-to-b from-gray-50 to-white animate-on-scroll initial-hidden">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <div className="inline-flex items-center bg-blue-100 text-blue-700 px-4 py-2 rounded-full font-medium mb-6">
@@ -620,7 +620,7 @@ export default function PartnersPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Call to Action Section */}
       <section className="py-24 lg:py-32 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white animate-on-scroll initial-hidden">
@@ -636,7 +636,7 @@ export default function PartnersPage() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-orange-400"> Partner with Us?</span>
             </h2>
             <p className="text-xl lg:text-2xl mb-12 text-blue-100 leading-relaxed max-w-3xl mx-auto">
-              Join our growing network of partners and help us make quality education accessible to students worldwide.
+              Join our growing network of partners and help us make quality education accessible to students across India.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">

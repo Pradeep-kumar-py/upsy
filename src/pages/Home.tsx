@@ -8,7 +8,7 @@ export default function HomePage() {
   useEffect(() => {
     // Smooth scrolling for anchor links
     document.documentElement.style.scrollBehavior = 'smooth';
-    
+
     // Intersection Observer for scroll animations
     const observer = new IntersectionObserver(
       (entries) => {
@@ -115,45 +115,46 @@ export default function HomePage() {
           transform: translateY(30px);
         }
       `}</style>
-      
+
       <Navbar />
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/30 to-transparent"></div>
-        
+
         {/* Animated background elements */}
         <div className="absolute top-20 left-20 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="text-center lg:text-left">
                 <div className="initial-hidden animate-slideInLeft">
                   <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-                    Want to take that course or trip? 
+                    Invest in dreams
                     <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-orange-400 animate-pulse">
-                      Pay nothing now.
+                      Not in upfront Dues
                     </span>
                   </h1>
                 </div>
-                <div className="initial-hidden animate-fadeIn" style={{animationDelay: '0.3s'}}>
+                <div className="initial-hidden mb-16 animate-fadeIn" style={{ animationDelay: '0.3s' }}>
                   <p className="text-xl lg:text-2xl mb-8 text-blue-100 leading-relaxed font-light">
-                    Upsy helps students access career-building courses, foreign exchanges, and college trips — without asking parents or taking loans. You repay only when you start earning above ₹50,000/month.
+                    Get instant, reliable access to learning—starting day zero.
+                    No upfront payment required, so you can focus on what matters most.
                   </p>
                 </div>
-                <div className="initial-hidden animate-scaleIn" style={{animationDelay: '0.6s'}}>
+                <div className="initial-hidden animate-scaleIn" style={{ animationDelay: '0.6s' }}>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
-                    <Link 
-                      href="/form" 
+                    <Link
+                      href="/form"
                       className="group bg-white text-blue-700 px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl focus:ring-4 focus:ring-white/50"
                     >
                       <span className="group-hover:mr-2 transition-all duration-300">Get Early Access</span>
                       <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
                     </Link>
-                    <a 
-                      href="#how-it-works" 
+                    <a
+                      href="#how-it-works"
                       className="glass-card text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/20 transition-all duration-300 focus:ring-4 focus:ring-white/30"
                     >
                       Learn How It Works
@@ -161,13 +162,13 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-              
-              <div className="initial-hidden animate-fadeIn" style={{animationDelay: '0.9s'}}>
+
+              <div className="initial-hidden animate-fadeIn" style={{ animationDelay: '0.9s' }}>
                 <div className="relative">
                   <div className="glass-card rounded-3xl p-8 hover-lift">
-                    <img 
-                      src="https://img.freepik.com/free-photo/college-friends-teamworking_1098-15709.jpg?t=st=1752571988~exp=1752575588~hmac=8c387279807183f649e1f63fccb1e849a5e81174ee77f6eea4645c3afca9bdbb" 
-                      alt="Group of students collaborating on a project" 
+                    <img
+                      src="https://img.freepik.com/free-photo/college-friends-teamworking_1098-15709.jpg?t=st=1752571988~exp=1752575588~hmac=8c387279807183f649e1f63fccb1e849a5e81174ee77f6eea4645c3afca9bdbb"
+                      alt="Group of students collaborating on a project"
                       className="w-full h-80 object-cover rounded-2xl"
                       loading="eager"
                     />
@@ -177,7 +178,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        
+
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
           <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
@@ -195,22 +196,23 @@ export default function HomePage() {
               What is Upsy?
             </div>
             <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              A revolutionary way to fund 
+              A revolutionary way to fund
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800"> your dreams</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Without the burden of traditional loans or debt
+              Without any upfront stress
             </p>
           </div>
-          
+
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
               <div className="prose prose-lg">
                 <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-8 leading-tight">
-                  Upsy is a new way to fund what matters most — without debt. 
-                  <span className="text-blue-600">We pay on your behalf</span> to your course provider, club, or trip organizer.
+                  Upsy ensures your learning begins from day one, free from the upfront payment stress. <br /> Students or parents—
+                  <span className="text-blue-600">Upsy’s got you covered </span> every step of the way.
+
                 </h3>
-                
+
                 <div className="space-y-6 mb-8">
                   <div className="flex items-start group">
                     <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
@@ -219,11 +221,11 @@ export default function HomePage() {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">No loans</h4>
-                      <p className="text-gray-600">No traditional debt or credit requirements</p>
+                      <h4 className="font-semibold text-gray-900 mb-1">One stop solution</h4>
+                      <p className="text-gray-600">Connect direct from the partner outlet</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start group">
                     <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
                       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -231,11 +233,11 @@ export default function HomePage() {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">No interest</h4>
-                      <p className="text-gray-600">Pay only what you owe, nothing more</p>
+                      <h4 className="font-semibold text-gray-900 mb-1">Pay nothing now</h4>
+                      <p className="text-gray-600">Your repayments broken into parts</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start group">
                     <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
                       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -243,42 +245,42 @@ export default function HomePage() {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">No repayment if you don't get a job</h4>
-                      <p className="text-gray-600">We share the risk of your future success</p>
+                      <h4 className="font-semibold text-gray-900 mb-1">On spot confirmation</h4>
+                      <p className="text-gray-600">Get your enrollment confirmed in the first visit</p>
                     </div>
                   </div>
                 </div>
-                
-                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-2xl border border-blue-100">
+
+                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 rounded-2xl border border-blue-100">
                   <p className="text-blue-800 font-medium text-center">
-                    💡 Only pay when you earn above ₹50,000/month
+                    We believe your time is better spent learning, not filling out lengthy information portals.
                   </p>
                 </div>
               </div>
             </div>
-            
+
             <div className="order-1 lg:order-2">
               <div className="relative">
                 <div className="glass-card-dark rounded-3xl p-8 hover-lift">
-                  <img 
-                    src="https://img.freepik.com/free-photo/young-woman-working-laptop-floor-white-background_231208-9495.jpg?t=st=1752571898~exp=1752575498~hmac=ea50b6599f0e931827ca1f08f030ed31db827241f43804b579e9a5d1cfcd6f7e&w=2000" 
-                    alt="Student studying with laptop" 
+                  <img
+                    src="https://img.freepik.com/free-photo/young-woman-working-laptop-floor-white-background_231208-9495.jpg?t=st=1752571898~exp=1752575498~hmac=ea50b6599f0e931827ca1f08f030ed31db827241f43804b579e9a5d1cfcd6f7e&w=2000"
+                    alt="Student studying with laptop"
                     className="rounded-2xl shadow-2xl w-full h-80 object-cover"
                   />
                 </div>
-                
+
                 {/* Floating stats cards */}
                 <div className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-xl p-4 hover-lift">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-blue-600">0%</div>
+                    <div className="text-2xl font-bold text-blue-600">Low</div>
                     <div className="text-sm text-gray-600">Interest</div>
                   </div>
                 </div>
-                
+
                 <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-xl p-4 hover-lift">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-green-600">100%</div>
-                    <div className="text-sm text-gray-600">Trust-based</div>
+                    <div className="text-2xl font-bold text-green-600">Zero</div>
+                    <div className="text-sm text-gray-600">Hurdles</div>
                   </div>
                 </div>
               </div>
@@ -296,14 +298,14 @@ export default function HomePage() {
               How It Works
             </div>
             <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Simple, transparent, 
+              Simple, transparent,
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800"> student-first</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Four simple steps to fund your dreams without traditional loans
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             <div className="group relative">
               <div className="glass-card-dark rounded-3xl p-8 h-full hover-lift group-hover:bg-blue-50 transition-all duration-500">
@@ -312,29 +314,29 @@ export default function HomePage() {
                     <span className="text-2xl font-bold text-white">1</span>
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4">Apply for what you need</h3>
-                  <p className="text-gray-600 leading-relaxed flex-grow">Tell us the course, club, or trip you want to join. We review and approve quickly.</p>
-                  
+                  <p className="text-gray-600 leading-relaxed flex-grow">Apply for the course on the website after signing in.</p>
+
                   {/* Connection line */}
                   <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-blue-200 to-blue-300 transform -translate-y-1/2"></div>
                 </div>
               </div>
             </div>
-            
+
             <div className="group relative">
               <div className="glass-card-dark rounded-3xl p-8 h-full hover-lift group-hover:bg-blue-50 transition-all duration-500">
                 <div className="flex flex-col items-center text-center h-full">
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <span className="text-2xl font-bold text-white">2</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">Sign an ISA</h3>
-                  <p className="text-gray-600 leading-relaxed flex-grow">Income Share Agreement - pay a small % of future income only if you earn above ₹50,000/month.</p>
-                  
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Digital KYC</h3>
+                  <p className="text-gray-600 leading-relaxed flex-grow">Check eligibility with minimum document requirements.</p>
+
                   {/* Connection line */}
                   <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-blue-200 to-blue-300 transform -translate-y-1/2"></div>
                 </div>
               </div>
             </div>
-            
+
             <div className="group relative">
               <div className="glass-card-dark rounded-3xl p-8 h-full hover-lift group-hover:bg-blue-50 transition-all duration-500">
                 <div className="flex flex-col items-center text-center h-full">
@@ -342,35 +344,35 @@ export default function HomePage() {
                     <span className="text-2xl font-bold text-white">3</span>
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4">We pay directly</h3>
-                  <p className="text-gray-600 leading-relaxed flex-grow">You don't handle the money. We settle directly with your course provider or organizer.</p>
-                  
+                  <p className="text-gray-600 leading-relaxed flex-grow">Check eligibility with minimum document requirements.</p>
+
                   {/* Connection line */}
                   <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-blue-200 to-blue-300 transform -translate-y-1/2"></div>
                 </div>
               </div>
             </div>
-            
+
             <div className="group">
               <div className="glass-card-dark rounded-3xl p-8 h-full hover-lift group-hover:bg-blue-50 transition-all duration-500">
                 <div className="flex flex-col items-center text-center h-full">
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <span className="text-2xl font-bold text-white">4</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">Repay from income</h3>
-                  <p className="text-gray-600 leading-relaxed flex-grow">Simple auto-debit starts once you begin earning. Fair and transparent.</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Repay in parts</h3>
+                  <p className="text-gray-600 leading-relaxed flex-grow">Simple, transparent auto-debit plan to repay</p>
                 </div>
               </div>
             </div>
           </div>
-          
+
           <div className="text-center">
             <div className="inline-flex items-center bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-2xl px-8 py-4">
-              <svg className="w-6 h-6 text-green-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {/* <svg className="w-6 h-6 text-green-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
+              </svg> */}
               <span className="text-lg font-semibold text-gray-900">
-                No earnings = No repayments. 
-                <span className="text-blue-600"> Fair, right?</span>
+                Our technology handles complexity,<br />
+                <span className="text-blue-600"> so you don’t have to be tech savvy.</span>
               </span>
             </div>
           </div>
@@ -386,14 +388,14 @@ export default function HomePage() {
               Who It's For
             </div>
             <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Made for 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800"> ambitious students</span>
+              Made for
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800"> ambitious learners</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Perfect for students who dream big but need smart funding solutions
+              Perfect for learners who dream big but need smart funding solutions
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             <div className="group">
               <div className="glass-card-dark rounded-3xl p-8 h-full hover-lift group-hover:bg-gradient-to-br group-hover:from-blue-50 group-hover:to-indigo-50 transition-all duration-500">
@@ -401,53 +403,53 @@ export default function HomePage() {
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <span className="text-3xl">🚀</span>
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-4">Bootcamp Dreamers</h3>
-                  <p className="text-gray-600 leading-relaxed flex-grow">Want to join a bootcamp but can't pay upfront fees</p>
+                  <h3 className="font-bold text-gray-900 mb-4">students</h3>
+                  <p className="text-gray-600 leading-relaxed flex-grow">Ambitious learners seeking flexible, affordable education</p>
                 </div>
               </div>
             </div>
-            
+
             <div className="group">
               <div className="glass-card-dark rounded-3xl p-8 h-full hover-lift group-hover:bg-gradient-to-br group-hover:from-blue-50 group-hover:to-indigo-50 transition-all duration-500">
                 <div className="flex flex-col items-center text-center h-full">
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <span className="text-3xl">🌍</span>
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-4">Global Explorers</h3>
-                  <p className="text-gray-600 leading-relaxed flex-grow">Got selected for a foreign program, need funding support</p>
+                  <h3 className="font-bold text-gray-900 mb-4">parents</h3>
+                  <p className="text-gray-600 leading-relaxed flex-grow">Making quality education affordable for your child’s future</p>
                 </div>
               </div>
             </div>
-            
+
             <div className="group">
               <div className="glass-card-dark rounded-3xl p-8 h-full hover-lift group-hover:bg-gradient-to-br group-hover:from-blue-50 group-hover:to-indigo-50 transition-all duration-500">
                 <div className="flex flex-col items-center text-center h-full">
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <span className="text-3xl">🎓</span>
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-4">Skill Builders</h3>
-                  <p className="text-gray-600 leading-relaxed flex-grow">Need CV-building courses, but traditional loans feel too heavy</p>
+                  <h3 className="font-bold text-gray-900 mb-4">employees</h3>
+                  <p className="text-gray-600 leading-relaxed flex-grow">Professionals upgrading skills for career growth</p>
                 </div>
               </div>
             </div>
-            
+
             <div className="group">
               <div className="glass-card-dark rounded-3xl p-8 h-full hover-lift group-hover:bg-gradient-to-br group-hover:from-blue-50 group-hover:to-indigo-50 transition-all duration-500">
                 <div className="flex flex-col items-center text-center h-full">
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <span className="text-3xl">🥳</span>
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-4">Memory Makers</h3>
-                  <p className="text-gray-600 leading-relaxed flex-grow">Don't want to miss trips or experiences with friends</p>
+                  <h3 className="font-bold text-gray-900 mb-4">Job seekers</h3>
+                  <p className="text-gray-600 leading-relaxed flex-grow">Motivated candidates preparing for new roles</p>
                 </div>
               </div>
             </div>
           </div>
-          
+
           <div className="text-center">
             <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-8 max-w-4xl mx-auto">
               <p className="text-xl text-gray-800">
-                We're here for anyone who says: 
+                We're here for anyone who says:
                 <br />
                 <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800 block mt-2">
                   "I can't afford this right now — but I will soon."
@@ -459,7 +461,7 @@ export default function HomePage() {
       </section>
 
       {/* Real Use Case Examples */}
-      <section id="use-cases" className="py-24 lg:py-32 bg-white animate-on-scroll initial-hidden">
+      {/* <section id="use-cases" className="py-24 lg:py-32 bg-white animate-on-scroll initial-hidden">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20">
             <div className="inline-flex items-center bg-blue-100 text-blue-700 px-4 py-2 rounded-full font-medium mb-6">
@@ -467,22 +469,22 @@ export default function HomePage() {
               Success Stories
             </div>
             <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Real students, 
+              Real students,
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800"> real success</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               See how Upsy has helped students achieve their dreams
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="group">
               <div className="glass-card-dark rounded-3xl overflow-hidden hover-lift h-full">
                 <div className="aspect-w-16 aspect-h-10">
-                  <img 
-                    src="https://img.freepik.com/free-photo/person-working-animation-porject_23-2149269895.jpg" 
-                    alt="Student coding on laptop" 
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" 
+                  <img
+                    src="https://img.freepik.com/free-photo/person-working-animation-porject_23-2149269895.jpg"
+                    alt="Student coding on laptop"
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="p-8">
@@ -504,14 +506,14 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            
+
             <div className="group">
               <div className="glass-card-dark rounded-3xl overflow-hidden hover-lift h-full">
                 <div className="aspect-w-16 aspect-h-10">
-                  <img 
-                    src="https://img.freepik.com/free-photo/portrait-female-college-student-holding-book-hand-smiling-camera_23-2148093193.jpg?semt=ais_hybrid&w=740" 
-                    alt="Student traveling abroad" 
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" 
+                  <img
+                    src="https://img.freepik.com/free-photo/portrait-female-college-student-holding-book-hand-smiling-camera_23-2148093193.jpg?semt=ais_hybrid&w=740"
+                    alt="Student traveling abroad"
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="p-8">
@@ -533,14 +535,14 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            
+
             <div className="group">
               <div className="glass-card-dark rounded-3xl overflow-hidden hover-lift h-full">
                 <div className="aspect-w-16 aspect-h-10">
-                  <img 
-                    src="https://i.pinimg.com/736x/00/73/1c/00731cf8c1391d7b73f8f0bff982b9ff.jpg" 
-                    alt="Student preparing for MBA" 
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" 
+                  <img
+                    src="https://i.pinimg.com/736x/00/73/1c/00731cf8c1391d7b73f8f0bff982b9ff.jpg"
+                    alt="Student preparing for MBA"
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="p-8">
@@ -564,7 +566,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Safe, Secure & Student-First */}
       <section id="safe-secure" className="py-24 lg:py-32 bg-gradient-to-b from-gray-50 to-white animate-on-scroll initial-hidden">
@@ -575,14 +577,14 @@ export default function HomePage() {
               Trust & Safety
             </div>
             <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Safe, secure & 
+              Safe, secure &
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800"> student-first</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Built with student welfare and protection as our top priority
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="group">
               <div className="glass-card-dark rounded-3xl p-8 hover-lift group-hover:bg-gradient-to-br group-hover:from-blue-50 group-hover:to-indigo-50 transition-all duration-500 h-full">
@@ -592,12 +594,12 @@ export default function HomePage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">Zero Harassment Risk</h3>
-                  <p className="text-gray-600 leading-relaxed flex-grow">ISA is not a loan — no aggressive collection tactics, no harassment, ever.</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Trustworthy & transparent</h3>
+                  <p className="text-gray-600 leading-relaxed flex-grow">No gimmicky promises and hidden charges  ever</p>
                 </div>
               </div>
             </div>
-            
+
             <div className="group">
               <div className="glass-card-dark rounded-3xl p-8 hover-lift group-hover:bg-gradient-to-br group-hover:from-blue-50 group-hover:to-indigo-50 transition-all duration-500 h-full">
                 <div className="flex flex-col items-center text-center h-full">
@@ -618,31 +620,31 @@ export default function HomePage() {
       {/* Early Access Form */}
       <section id="early-access" className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white py-32 overflow-hidden animate-on-scroll initial-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
-        
+
         {/* Animated background elements */}
         <div className="absolute top-20 left-20 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        
+
         <div className="container mx-auto px-6 text-center relative z-10">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-              Ready to fund 
+              Ready to fund
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-orange-400"> your dreams?</span>
             </h2>
             <p className="text-xl lg:text-2xl text-blue-100 mb-12 leading-relaxed">
               Join our early access program and be among the first to experience the future of student financing.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Link 
-                href="/form" 
+              <Link
+                href="/form"
                 className="group bg-white text-blue-700 px-10 py-5 rounded-xl font-bold hover:bg-gray-50 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-3xl focus:ring-4 focus:ring-white/50 text-lg"
               >
                 <span className="group-hover:mr-2 transition-all duration-300">Get Early Access</span>
                 <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
               </Link>
-              <Link 
-                href="#" 
+              <Link
+                href="#"
                 className="glass-card text-white px-10 py-5 rounded-xl font-bold hover:bg-white/20 transition-all duration-300 focus:ring-4 focus:ring-white/30 text-lg"
               >
                 📞 Chat with Team Upsy
@@ -661,14 +663,14 @@ export default function HomePage() {
               FAQs
             </div>
             <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Got 
+              Got
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800"> questions?</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               We've answered the most common questions about how Upsy works
             </p>
           </div>
-          
+
           <div className="max-w-4xl mx-auto space-y-6">
             <div className="group">
               <div className="glass-card-dark rounded-3xl p-8 hover-lift group-hover:bg-blue-50 transition-all duration-500">
@@ -679,7 +681,7 @@ export default function HomePage() {
                 <p className="text-gray-700 leading-relaxed pl-11">No. You pay only if you earn. No interest, no credit score needed. It's an Income Share Agreement (ISA).</p>
               </div>
             </div>
-            
+
             <div className="group">
               <div className="glass-card-dark rounded-3xl p-8 hover-lift group-hover:bg-blue-50 transition-all duration-500">
                 <h3 className="text-xl font-bold text-blue-600 mb-4 flex items-center">
@@ -689,7 +691,7 @@ export default function HomePage() {
                 <p className="text-gray-700 leading-relaxed pl-11">You don't repay. That's the risk we take for believing in you and your potential.</p>
               </div>
             </div>
-            
+
             <div className="group">
               <div className="glass-card-dark rounded-3xl p-8 hover-lift group-hover:bg-blue-50 transition-all duration-500">
                 <h3 className="text-xl font-bold text-blue-600 mb-4 flex items-center">
@@ -699,7 +701,7 @@ export default function HomePage() {
                 <p className="text-gray-700 leading-relaxed pl-11">Never. Our model is designed around trust and flexibility. We believe in supporting students, not pressuring them.</p>
               </div>
             </div>
-            
+
             <div className="group">
               <div className="glass-card-dark rounded-3xl p-8 hover-lift group-hover:bg-blue-50 transition-all duration-500">
                 <h3 className="text-xl font-bold text-blue-600 mb-4 flex items-center">
@@ -725,7 +727,7 @@ export default function HomePage() {
                 <div className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Upsy</div>
               </div>
               <p className="text-gray-300 max-w-md text-lg leading-relaxed mb-6">
-                Fund your dreams without debt. Pay only when you earn. That's the Upsy promise.
+                Fund your DREAM faster without upfront stress
               </p>
               <div className="flex space-x-4">
                 <a href="#" className="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center hover:bg-blue-600 transition-colors duration-300">
@@ -767,7 +769,7 @@ export default function HomePage() {
           <div className="border-t border-gray-700 pt-8">
             <div className="text-center">
               <p className="text-gray-400 mb-4 text-lg">
-                Have questions? 
+                Have questions?
                 <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors duration-300 font-semibold ml-2">
                   Chat with Team Upsy →
                 </a>
