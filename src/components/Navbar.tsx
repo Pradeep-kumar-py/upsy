@@ -21,7 +21,7 @@ const Navbar = () => {
     const homeDropdownItems = useMemo(() => [
         { name: "How It Works", href: "#how-it-works", id: "how-it-works" },
         { name: "Who It's For", href: "#who-its-for", id: "who-its-for" },
-        { name: "Success Stories", href: "#use-cases", id: "use-cases" },
+        // { name: "Success Stories", href: "#use-cases", id: "use-cases" },
         { name: "FAQs", href: "#faqs", id: "faqs" },
     ], []);
 

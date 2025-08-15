@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Upsy",
-  description: "Upsy - Your Personal loan provider",
+  description: "Empowering your next big move",
 };
 
 export default function RootLayout({
