@@ -676,9 +676,9 @@ export default function HomePage() {
               <div className="glass-card-dark rounded-3xl p-8 hover-lift group-hover:bg-blue-50 transition-all duration-500">
                 <h3 className="text-xl font-bold text-blue-600 mb-4 flex items-center">
                   <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 text-sm">?</span>
-                  Is this a loan?
+                  Which documents do I need to apply?
                 </h3>
-                <p className="text-gray-700 leading-relaxed pl-11">No. You pay only if you earn. No interest, no credit score needed. It's an Income Share Agreement (ISA).</p>
+                <p className="text-gray-700 leading-relaxed pl-11">Just Aadhar and PAN. That's it.</p>
               </div>
             </div>
 
@@ -686,9 +686,9 @@ export default function HomePage() {
               <div className="glass-card-dark rounded-3xl p-8 hover-lift group-hover:bg-blue-50 transition-all duration-500">
                 <h3 className="text-xl font-bold text-blue-600 mb-4 flex items-center">
                   <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 text-sm">?</span>
-                  What if I never get a job?
+                  What is the usual time frame for approval? 
                 </h3>
-                <p className="text-gray-700 leading-relaxed pl-11">You don't repay. That's the risk we take for believing in you and your potential.</p>
+                <p className="text-gray-700 leading-relaxed pl-11">Profile setup and approval usually take under 5 minutes, and your program access will be ready faster than you can cook Maggi. basically, we’re quicker than your fastest delivery.</p>
               </div>
             </div>
 
