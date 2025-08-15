@@ -401,7 +401,7 @@ export default function HomePage() {
               <div className="glass-card-dark rounded-3xl p-8 h-full hover-lift group-hover:bg-gradient-to-br group-hover:from-blue-50 group-hover:to-indigo-50 transition-all duration-500">
                 <div className="flex flex-col items-center text-center h-full">
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <span className="text-3xl">🚀</span>
+                    <span className="text-3xl">🧑‍🎓</span>
                   </div>
                   <h3 className="font-bold text-gray-900 mb-4">students</h3>
                   <p className="text-gray-600 leading-relaxed flex-grow">Ambitious learners seeking flexible, affordable education</p>
@@ -413,7 +413,7 @@ export default function HomePage() {
               <div className="glass-card-dark rounded-3xl p-8 h-full hover-lift group-hover:bg-gradient-to-br group-hover:from-blue-50 group-hover:to-indigo-50 transition-all duration-500">
                 <div className="flex flex-col items-center text-center h-full">
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <span className="text-3xl">🌍</span>
+                    <span className="text-3xl">👨‍👦</span>
                   </div>
                   <h3 className="font-bold text-gray-900 mb-4">parents</h3>
                   <p className="text-gray-600 leading-relaxed flex-grow">Making quality education affordable for your child’s future</p>
@@ -425,7 +425,7 @@ export default function HomePage() {
               <div className="glass-card-dark rounded-3xl p-8 h-full hover-lift group-hover:bg-gradient-to-br group-hover:from-blue-50 group-hover:to-indigo-50 transition-all duration-500">
                 <div className="flex flex-col items-center text-center h-full">
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <span className="text-3xl">🎓</span>
+                    <span className="text-3xl">👔</span>
                   </div>
                   <h3 className="font-bold text-gray-900 mb-4">employees</h3>
                   <p className="text-gray-600 leading-relaxed flex-grow">Professionals upgrading skills for career growth</p>
@@ -437,7 +437,7 @@ export default function HomePage() {
               <div className="glass-card-dark rounded-3xl p-8 h-full hover-lift group-hover:bg-gradient-to-br group-hover:from-blue-50 group-hover:to-indigo-50 transition-all duration-500">
                 <div className="flex flex-col items-center text-center h-full">
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <span className="text-3xl">🥳</span>
+                    <span className="text-3xl">🧑</span>
                   </div>
                   <h3 className="font-bold text-gray-900 mb-4">Job seekers</h3>
                   <p className="text-gray-600 leading-relaxed flex-grow">Motivated candidates preparing for new roles</p>
