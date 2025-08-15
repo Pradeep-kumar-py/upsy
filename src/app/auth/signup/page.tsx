@@ -10,9 +10,9 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100 flex">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex">
       {/* Left Side - Illustration */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-amber-400 to-orange-500 items-center justify-center p-8">
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-blue-500 to-blue-600 items-center justify-center p-8">
         <div className="text-center text-white max-w-lg">
           <div className="mb-8">
             <h1 className="text-4xl font-bold mb-2">upsy</h1>
@@ -49,7 +49,7 @@ export default function SignupPage() {
         {/* Mobile Logo */}
         <div className="lg:hidden absolute top-8 left-1/2 transform -translate-x-1/2">
           <h1 className="text-3xl font-bold text-gray-800">upsy</h1>
-          <div className="w-12 h-1 bg-orange-500 mx-auto rounded-full mt-2"></div>
+          <div className="w-12 h-1 bg-blue-500 mx-auto rounded-full mt-2"></div>
         </div>
 
         <SignupForm onToggleMode={handleToggleMode} />

@@ -57,7 +57,7 @@ const AuthForm: React.FC = () => {
         {/* Mobile Logo */}
         <div className="lg:hidden absolute top-8 left-1/2 transform -translate-x-1/2">
           <h1 className="text-3xl font-bold text-gray-800">upsy</h1>
-          <div className="w-12 h-1 bg-orange-500 mx-auto rounded-full mt-2"></div>
+          <div className="w-12 h-1 bg-blue-500 mx-auto rounded-full mt-2"></div>
         </div>
 
         {isLogin ? (

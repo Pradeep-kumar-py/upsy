@@ -72,19 +72,19 @@ export default function VerifyEmailPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100 flex items-center justify-center p-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-8">
       <div className="max-w-md w-full">
         <div className="bg-white rounded-2xl shadow-xl p-8 text-center">
           <div className="mb-6">
             <h1 className="text-3xl font-bold text-gray-800 mb-2">upsy</h1>
-            <div className="w-12 h-1 bg-orange-500 mx-auto rounded-full"></div>
+            <div className="w-12 h-1 bg-blue-500 mx-auto rounded-full"></div>
           </div>
 
           <div className="mb-6">
             {status === 'loading' && (
               <div className="flex flex-col items-center">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4">
-                  <div className="w-8 h-8 border-2 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                  <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
                 </div>
                 <h2 className="text-xl font-semibold text-gray-800 mb-2">Verifying your email...</h2>
                 <p className="text-gray-600">Please wait while we verify your email address.</p>
@@ -102,7 +102,7 @@ export default function VerifyEmailPage() {
                 <div className="space-y-3 w-full">
                   <a
                     href="/auth/login"
-                    className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold py-3 px-4 rounded-lg transition-all flex items-center justify-center gap-2"
+                    className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-all flex items-center justify-center gap-2"
                   >
                     Continue to Login
                     <ArrowRight size={20} />
@@ -128,7 +128,7 @@ export default function VerifyEmailPage() {
                 <div className="space-y-3 w-full">
                   <a
                     href="/auth/signup"
-                    className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold py-3 px-4 rounded-lg transition-all flex items-center justify-center gap-2"
+                    className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-all flex items-center justify-center gap-2"
                   >
                     Sign Up Again
                     <ArrowRight size={20} />
