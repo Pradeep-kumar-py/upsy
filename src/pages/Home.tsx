@@ -692,7 +692,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="group">
+            {/* <div className="group">
               <div className="glass-card-dark rounded-3xl p-8 hover-lift group-hover:bg-blue-50 transition-all duration-500">
                 <h3 className="text-xl font-bold text-blue-600 mb-4 flex items-center">
                   <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 text-sm">?</span>
@@ -700,9 +700,9 @@ export default function HomePage() {
                 </h3>
                 <p className="text-gray-700 leading-relaxed pl-11">Never. Our model is designed around trust and flexibility. We believe in supporting students, not pressuring them.</p>
               </div>
-            </div>
+            </div> */}
 
-            <div className="group">
+            {/* <div className="group">
               <div className="glass-card-dark rounded-3xl p-8 hover-lift group-hover:bg-blue-50 transition-all duration-500">
                 <h3 className="text-xl font-bold text-blue-600 mb-4 flex items-center">
                   <span className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 text-sm">?</span>
@@ -710,7 +710,7 @@ export default function HomePage() {
                 </h3>
                 <p className="text-gray-700 leading-relaxed pl-11">Yes! As long as you agree to repay from your future income. We believe experiences matter too.</p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
