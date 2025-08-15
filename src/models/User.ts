@@ -73,7 +73,7 @@ const UserSchema: Schema = new Schema({
   timestamps: true
 });
 
-// Index for faster queries (email already has unique index)
+// Index for faster queries
 UserSchema.index({ emailVerificationToken: 1 });
 
 export default mongoose.models.User || mongoose.model<IUser>('User', UserSchema);
