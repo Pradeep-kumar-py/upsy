@@ -13,8 +13,8 @@ export const sendVerificationEmail = async ({ email, name, verificationToken }: 
 
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Upsy <onboarding@resend.dev>',
-      to: [email],
+      from: 'Upsy <noreply@studymonk.live>',
+      to: email,
       subject: 'Verify your email address - Upsy',
       html: `
         <!DOCTYPE html>
@@ -82,8 +82,8 @@ export const sendVerificationEmail = async ({ email, name, verificationToken }: 
 export const sendWelcomeEmail = async (email: string, name: string) => {
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Upsy <onboarding@resend.dev>',
-      to: [email],
+      from: 'Upsy <noreply@studymonk.live>',
+      to: email,
       subject: 'Welcome to Upsy!',
       html: `
         <!DOCTYPE html>
