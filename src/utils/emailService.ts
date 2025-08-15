@@ -1,6 +1,6 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY || 're_5savY8Ap_PgSotpzR4udAPi991SHtkyuW');
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export interface EmailVerificationData {
   email: string;
@@ -9,7 +9,7 @@ export interface EmailVerificationData {
 }
 
 export const sendVerificationEmail = async ({ email, name, verificationToken }: EmailVerificationData) => {
-  const verificationUrl = `${process.env.NEXTAUTH_URL || 'http://localhost:3000'}/verify-email?token=${verificationToken}`;
+  const verificationUrl = `${process.env.NEXTAUTH_URL || 'https://upsy.in'}/verify-email?token=${verificationToken}`;
 
   try {
     const { data, error } = await resend.emails.send({
